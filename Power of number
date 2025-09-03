@@ -1,0 +1,16 @@
+class Solution:
+    def reverseexponentiation(self, n):
+        def reverse(num):
+            return int(str(num)[::-1])
+        
+        def power(x, y):
+            if y == 0:
+                return 1
+            temp = power(x, y // 2)
+            if y % 2 == 0:
+                return temp * temp
+            else:
+                return x * temp * temp
+        
+        rev = reverse(n)
+        return power(n, rev)
